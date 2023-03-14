@@ -52,3 +52,34 @@ p태그
         <ol>
             <li>항목</li>
         <ol>
+
+iframe
+    문법
+        <iframe src="불러올 웹페이지의 URL" scrolling="스크롤링 허용 여부(yes/no/auto)">
+        iframe을 지원하지 않는 브라우저의 경우 대체정보를 제공
+        </iframe>
+    scrolling
+        yes: 스크롤링 허용, 스크롤이 필요하지 않아도 스크롤 바를 노출
+        no: 스크롤 하지 않음
+        auto: 스크롤이 필요한 경우에만 스크롤 바 노출(기본값)
+
+이스케이핑
+    &amp; → & (ampersand, U+0026)
+    &lt; → < (less-than sign, U+003C)
+    &gt; → > (greater-than sign, U+003E)
+    &quot; → " (quotation mark, U+0022)
+    &apos; → ' (apostrophe, U+0027)
+    &nbsp; → space
+
+표
+    행(가로) - row
+    열(세로) - column
+    문법
+        <table border="테두리 두께">
+            <tr>
+                <td(th)>1열 1행</td(th)><td>2열1행</td>
+            </tr>
+            <tr>
+                <td>1열 2행</td><td>2열2행</td>
+            </tr>
+        </table>
