@@ -8,5 +8,5 @@ git commit -m "히스토리 이름"
     히스토리 만들기
 git remote -v
     주소값 확인
-git push origin master
+git push origin main
     푸쉬
