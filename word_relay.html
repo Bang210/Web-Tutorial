@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,15 +14,63 @@
 <body>
   <div><span id="order">1</span>번째 참가자</div>
   <div>제시어: <span id="word"></span></div>
-	<input type="text">
-	<button>입력</button>
-	<script>
-    const number = parseInt(prompt('몇 명이 참가하나요?'), 10);
-    console.log('number', number);
-    alert(number);
-    const yesOrNo = confirm('맞나요?');
-    console.log(yesOrNo)
-	</script>
+  <input type="text">
+  <button>입력</button>
+  <script>
+    const number = Number(prompt('몇 명이 참가하나요?'), 10);
+    const $button = document.querySelector('button');
+    const $input = document.querySelector('input');
+    const $word = document.querySelector('#word');
+    const $order = document.querySelector('#order');
+    let word; //제시어
+    let newWord; //새로 입력한 단어
+
+    const onClickButton = () => {
+
+      if (!word) {
+        //제시어가 비어있는 경우
+        word = newWord; //입력한 단어가 제시어가 됨
+        $word.textContent = word;
+        $input.value = '' //입력창을 비워줌
+        $input.focus();
+        const order = Number($order.textContent); //현재순서
+        if (order + 1 > number) {
+          $order.textContent = 1;
+        }
+        else {
+          $order.textContent = order + 1;
+        }
+      }
+      else {
+        //제시어가 비어있지 않은 경우
+        if (word[word.length - 1] === newWord[0]) { //올바를 경우
+          word = newWord; //입력한 단어가 제시어가 됨
+          $word.textContent = word;
+          $input.value = '';
+          $input.focus();
+          const order = Number($order.textContent);
+          if (order + 1 > number) {
+            $order.textContent = 1;
+          }
+          else {
+            $order.textContent = order + 1;
+          }
+        }
+        else { //올바르지 않을 경우
+          alert('올바르지 않은 단어입니다.')
+          $input.value = '';
+          $input.focus();
+        }
+      }
+
+    };
+    const onInput = (event) => {
+      newWord = event.target.value;
+    };
+
+    $button.addEventListener('click', onClickButton);
+    $input.addEventListener('input', onInput);
+  </script>
 </body>
 
 </html>
